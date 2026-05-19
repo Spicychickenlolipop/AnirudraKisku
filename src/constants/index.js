@@ -66,12 +66,18 @@ const dockApps = [
     icon: "terminal.png",
     canOpen: true,
   },
+  // {
+  //   id: "trash",
+  //   name: "Archive", // was "Trash"
+  //   icon: "trash.png",
+  //   canOpen: true,
+  // },
   {
-    id: "trash",
-    name: "Archive", // was "Trash"
-    icon: "trash.png",
-    canOpen: false,
-  },
+  id: "trash",
+  name: "Trash",
+  icon: "trash.png",
+  canOpen: true,
+},
 ];
 
 const blogPosts = [
@@ -132,28 +138,28 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/Spicychickenlolipop",
   },
   {
     id: 2,
     text: "Platform",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "https://mail.google.com/mail/u/0/?fs=1&to=kisku.anirudra@gmail.com&tf=cm",
   },
   {
     id: 3,
     text: "Twitter/X",
     icon: "/icons/twitter.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "https://x.com/AnirudraKi53795",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://www.linkedin.com/in/anirudra-kisku-4335821b5/",
   },
 ];
 
@@ -202,6 +208,20 @@ const gallery = [
     id: 4,
     img: "/images/gal4.png",
   },
+
+  { 
+    id: 5, 
+    img: "/images/gal5.png" 
+  },
+  { 
+    id: 6, 
+    img: "/images/gal6.png" 
+  },
+  { 
+    id: 7, 
+    img: "/images/Spiderman.jpg" 
+  },
+
 ];
 
 export {
@@ -225,7 +245,7 @@ const WORK_LOCATION = {
     // ▶ Project 1
     {
       id: 5,
-      name: "Nike Ecommerce Website Application",
+      name: "ExamNotes.AI",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5", // icon position inside Finder
@@ -233,52 +253,54 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Nike Project.txt",
+          name: "ExamNotesAI.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-            "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-            "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
-            "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
+            [
+  "ExamNoteAI is a smart learning platform designed to generate clear, exam-ready notes from any topic.",
+  "Instead of spending hours summarizing content, it uses AI to instantly generate structured, easy-to-understand notes.",
+  "Think of it as your personal study assistant—helping you focus on understanding instead of just organizing.",
+  "Built with modern technologies, it delivers fast performance, a smooth user experience, and a clean, distraction-free interface."
+]
           ],
         },
         {
           id: 2,
-          name: "nike.com",
+          name: "examnotesai.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
+          href: "https://examnotesaiclient-habf.onrender.com/auth",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "nike.png",
+          name: "ExamNotesAI.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-1.png",
+          imageUrl: "/images/ExamNoteAI.png",
         },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 right-20",
-        },
+        // {
+        //   id: 5,
+        //   name: "Design.fig",
+        //   icon: "/images/plain.png",
+        //   kind: "file",
+        //   fileType: "fig",
+        //   href: "https://google.com",
+        //   position: "top-60 right-20",
+        // },
       ],
     },
 
     // ▶ Project 2
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "QuickChat",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -286,52 +308,52 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "AI Resume Analyzer Project.txt",
+          name: "QuickChat.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
           description: [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
-          ],
+  "QuickChat is a fast and intuitive messaging platform designed for seamless real-time communication.",
+  "Instead of slow and cluttered chat apps, it delivers instant messaging with a clean interface and smooth interactions.",
+  "Think of it like your personal chat space—simple, responsive, and built to keep conversations flowing effortlessly.",
+  "Built with modern technologies, it ensures speed, reliability, and a sleek experience across all devices."
+]
         },
         {
           id: 2,
-          name: "ai-resume-analyzer.com",
+          name: "quickchat.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
+          href: "https://chat-app-two-bice-93.vercel.app/login",
           position: "top-20 left-20",
         },
         {
           id: 4,
-          name: "ai-resume-analyzer.png",
+          name: "quickchat.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 left-80",
-          imageUrl: "/images/project-2.png",
+          imageUrl: "/images/QuickChat.png",
         },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 left-5",
-        },
+        // {
+        //   id: 5,
+        //   name: "Design.fig",
+        //   icon: "/images/plain.png",
+        //   kind: "file",
+        //   fileType: "fig",
+        //   href: "https://google.com",
+        //   position: "top-60 left-5",
+        // },
       ],
     },
 
     // ▶ Project 3
     {
       id: 7,
-      name: "Food Delivery App",
+      name: "Expense Tracker",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
@@ -339,45 +361,45 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Food Delivery App Project.txt",
+          name: "Expense Tracker.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-            "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-            "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-            "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
-          ],
+  "Expense Tracker is a simple and efficient tool designed to help you manage your daily finances with ease.",
+  "Instead of guessing where your money goes, it gives you a clear view of your income, expenses, and spending patterns.",
+  "Think of it like your personal finance companion—keeping everything organized and under control.",
+  "Built with modern technologies, it offers a smooth experience, fast performance, and a clean, user-friendly interface."
+]
         },
         {
           id: 2,
-          name: "food-delivery-app.com",
+          name: "expense-tracker.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
+          href: "https://expense-tracker2-seven.vercel.app/login",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "food-delivery-app.png",
+          name: "expense-tracker.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-3.png",
+          imageUrl: "/images/ExpenseTracker.png",
         },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 right-20",
-        },
+        // {
+        //   id: 5,
+        //   name: "Design.fig",
+        //   icon: "/images/plain.png",
+        //   kind: "file",
+        //   fileType: "fig",
+        //   href: "https://google.com",
+        //   position: "top-60 right-20",
+        // },
       ],
     },
   ],
@@ -405,17 +427,17 @@ const ABOUT_LOCATION = {
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
-      position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      position: "top-10 right-72",
+      imageUrl: "/images/MeInRoom.jpg",
     },
     {
       id: 3,
-      name: "conference-me.png",
+      name: "MeAndMe.png",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/meandme.jpeg",
     },
     {
       id: 4,
@@ -427,10 +449,13 @@ const ABOUT_LOCATION = {
       subtitle: "Meet the Developer Behind the Code",
       image: "/images/adrian.jpg",
       description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
-        "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
+        [
+          "Hey! I’m Anirudra 👋, a developer who enjoys building cool, interactive websites that just feel right.",
+          "I mostly work with React, JavaScript, and the MERN stack—bringing ideas to life on the web.",
+          "I’m all about clean UI, smooth UX, and code that actually makes sense when you come back later 😅",
+          "Right now, I’m building things like ExamNoteAI to make studying smarter and faster.",
+          "When I’m not coding, I’m tweaking designs, trying new tech, or getting obsessed with making things look perfect at 2AM 🚀"
+        ]
       ],
     },
   ],
@@ -455,33 +480,45 @@ const RESUME_LOCATION = {
   ],
 };
 
+// const TRASH_LOCATION = {
+//   id: 4,
+//   type: "trash",
+//   name: "Trash",
+//   icon: "/icons/trash.svg",
+//   kind: "folder",
+//   children: [
+//     {
+//       id: 1,
+//       name: "trash1.png",
+//       icon: "/images/image.png",
+//       kind: "file",
+//       fileType: "img",
+//       position: "top-10 left-10",
+//       imageUrl: "/images/trash-1.png",
+//     },
+//     {
+//       id: 2,
+//       name: "trash2.png",
+//       icon: "/images/image.png",
+//       kind: "file",
+//       fileType: "img",
+//       position: "top-40 left-80",
+//       imageUrl: "/images/trash-2.png",
+//     },
+//   ],
+// };
+
 const TRASH_LOCATION = {
   id: 4,
   type: "trash",
   name: "Trash",
   icon: "/icons/trash.svg",
   kind: "folder",
-  children: [
-    {
-      id: 1,
-      name: "trash1.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-10 left-10",
-      imageUrl: "/images/trash-1.png",
-    },
-    {
-      id: 2,
-      name: "trash2.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-40 left-80",
-      imageUrl: "/images/trash-2.png",
-    },
-  ],
+  children: [], // 🔥 dynamic
+  isTrash: true, // 🔥 important
 };
+
+
 
 export const locations = {
   work: WORK_LOCATION,
@@ -502,6 +539,15 @@ const WINDOW_CONFIG = {
 terminal:{ isOpen: false, isMinimized: false, isMaximized: false, zIndex: INITIAL_Z_INDEX,data: null},
   txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  // trash: { isOpen: false, isMinimized: false, isMaximized: false, zIndex: 1, data: null},
+  trash: { 
+  isOpen: false, 
+  isMinimized: false, 
+  isMaximized: false, 
+  zIndex: INITIAL_Z_INDEX, 
+  data: null
+},
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
+

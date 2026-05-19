@@ -38,13 +38,25 @@ const TextFile = () =>{
 
                 {subtitle ? <h3 className="text-lg font-semibold">{subtitle}</h3> : null}
 
-                {Array.isArray(description) && description.length > 0 ? (
+                {/* {Array.isArray(description) && description.length > 0 ? (
                     <div className="space-y-3 leading-relaxed text-base text-gray-800">
                         {description.map((para, idx)=>(
                             <p key={idx}>{para}</p>
                         ))}
                     </div>
-                ) : null}
+                ) : null} */}
+                {/* ✅ SUPPORT content (for love-letter) */}
+{data?.content ? (
+  <pre className="whitespace-pre-wrap leading-relaxed text-sm text-gray-800 font-mono bg-gray-50 p-3 rounded-md">
+    {data.content}
+  </pre>
+) : Array.isArray(description) && description.length > 0 ? (
+  <div className="space-y-3 leading-relaxed text-base text-gray-800">
+    {description.map((para, idx) => (
+      <p key={idx}>{para}</p>
+    ))}
+  </div>
+) : null}
             </div>
         </section>
     );
