@@ -140,7 +140,7 @@ body {
     }
   }
 
-  .ios-page-dots {
+  /* .ios-page-dots {
     @apply flex justify-center gap-1.5 py-2;
 
     span {
@@ -150,7 +150,7 @@ body {
         @apply bg-white;
       }
     }
-  }
+  } */
 
   .ios-dock {
     @apply mx-auto flex items-end justify-center gap-3 px-4 py-3 rounded-[28px] bg-white/25 backdrop-blur-2xl border border-white/20;
