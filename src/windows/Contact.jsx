@@ -4,13 +4,13 @@ import WindowWrapper from "#hoc/WindowWrapper"
 
 const Contact = () => {
   return (
-    <>
+    <div className="flex flex-col h-full max-sm:min-h-0">
         <div id="window-header">
             <WindowControls target="contact"/>
             <h2>Contact Me</h2>
         </div>
 
-        <div className="p-5 space-y-5">
+        <div className="contact-body p-5 space-y-5">
             <img 
                 src="/images/adrian.jpg" 
                 alt="Adrian"
@@ -39,7 +39,7 @@ const Contact = () => {
                 ))}
             </ul>
         </div>
-    </>
+    </div>
   )
 }
 

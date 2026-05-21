@@ -117,11 +117,13 @@ import { useGSAP } from "@gsap/react";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 const WindowWrapper = (Component, windowKey) => {
   const Wrapped = (props) => {
     const { focusWindow, windows } = useWindowStore();
     const window = windows[windowKey];
+    const isMobile = useIsMobile();
 
     const { isOpen, isMinimized, isMaximized, zIndex } = window;
 
@@ -133,11 +135,18 @@ const WindowWrapper = (Component, windowKey) => {
       const el = ref.current;
       if (!el) return;
 
-      el.style.display = isOpen && !isMinimized ? "block" : "none";
-    }, [isOpen, isMinimized]);
+      const visible = isOpen && !isMinimized;
+      el.style.display = visible ? (isMobile ? "flex" : "block") : "none";
 
-    /* ================= OPEN ANIMATION ================= */
+      if (isMobile) {
+        gsap.set(el, { clearProps: "transform,opacity" });
+      }
+    }, [isOpen, isMinimized, isMobile]);
+
+    /* ================= OPEN ANIMATION (desktop only) ================= */
     useGSAP(() => {
+      if (isMobile) return;
+
       const el = ref.current;
       if (!el || !isOpen || isMinimized) return;
 
@@ -146,44 +155,53 @@ const WindowWrapper = (Component, windowKey) => {
         { scale: 0.8, opacity: 0, y: 40 },
         { scale: 1, opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }
       );
-    }, [isOpen, isMinimized]);
+    }, [isOpen, isMinimized, isMobile]);
 
-    /* ================= DRAG ================= */
+    /* ================= DRAG (desktop only) ================= */
     useGSAP(() => {
-      if (!ref.current || isMaximized) return;
+      if (isMobile || !ref.current || isMaximized) return;
 
       const header = ref.current.querySelector("#window-header");
       if (!header) return;
 
-      // 🔥 kill previous instance (VERY IMPORTANT)
       draggableRef.current?.kill();
 
       draggableRef.current = Draggable.create(ref.current, {
-        trigger: header,            // ✅ drag only from header
+        trigger: header,
         handle: header,
-        bounds: "#desktop",         // ✅ keep inside screen
-        inertia: true,              // ✅ smooth drag
+        bounds: "main",
+        inertia: true,
         onPress: () => focusWindow(windowKey),
       })[0];
 
       return () => draggableRef.current?.kill();
-    }, [isMaximized, windowKey]);
+    }, [isMaximized, windowKey, isMobile]);
 
     /* ================= WINDOW SIZE ================= */
-    const windowClasses = isMaximized
-      ? "fixed top-0 left-0 w-screen h-screen"
-      : windowKey === "terminal"
-      ? "absolute w-[600px] h-[400px]"
-      : "absolute w-fit h-fit";
+    const windowClasses = isMobile
+      ? "mobile-app-window"
+      : isMaximized
+        ? "fixed top-0 left-0 w-screen h-screen rounded-none"
+        : windowKey === "terminal"
+          ? "absolute w-[600px] h-[400px]"
+          : windowKey === "photos"
+            ? "absolute w-fit h-fit"
+            : "absolute w-fit h-fit";
 
     return (
       <section
         id={windowKey}
         ref={ref}
-        style={{ zIndex }}
+        style={{
+          zIndex:
+            isMobile && isOpen && !isMinimized ? zIndex : isMobile ? -1 : zIndex,
+        }}
         className={`${windowClasses} bg-white text-black rounded-xl shadow-xl border border-gray-200`}
+        data-mobile={isMobile ? "true" : undefined}
       >
-        <Component {...props} />
+        <div className={isMobile ? "mobile-window-body" : "contents"}>
+          <Component {...props} />
+        </div>
       </section>
     );
   };

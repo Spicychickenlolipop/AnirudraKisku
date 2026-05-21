@@ -955,7 +955,7 @@ ls, cd, pwd, cat, clear`,
   /* ================= UI ================= */
 
   return (
-    <section className="flex flex-col h-full">
+    <section className="flex flex-col h-full max-sm:min-h-0 w-full">
       {/* HEADER */}
       <div id="window-header" className="flex gap-3 p-2 bg-gray-200 shrink-0">
         <WindowControls target="terminal" />

@@ -153,13 +153,14 @@ const handleDelete = (item) => {
     ? trash
     : activeLocation?.children || [];
 
-  /* ================= SIDEBAR ================= */
-  const renderList = (name, items) => (
-    <div>
-      <h3>{name}</h3>
+  const favorites = Object.values(locations);
+  const projects = locations.work.children;
 
-      <ul>
-        {items.map((item) => (
+  const renderSidebarList = (name, listItems) => (
+    <div className="finder-sidebar-group">
+      <h3 className="finder-sidebar-heading">{name}</h3>
+      <ul className="finder-sidebar-list">
+        {listItems.map((item) => (
           <li
             key={item.id}
             onClick={() => {
@@ -168,15 +169,12 @@ const handleDelete = (item) => {
               }
             }}
             className={clsx(
-              item.id === activeLocation?.id
-                ? "active"
-                : "not-active"
+              "finder-sidebar-item",
+              item.id === activeLocation?.id ? "active" : "not-active"
             )}
           >
-            <img src={item.icon} className="w-4" alt={item.name} />
-            <p className="text-sm font-medium truncate">
-              {item.name}
-            </p>
+            <img src={item.icon} className="w-4 h-4 shrink-0" alt="" />
+            <p className="text-sm font-medium truncate">{item.name}</p>
           </li>
         ))}
       </ul>
@@ -184,16 +182,14 @@ const handleDelete = (item) => {
   );
 
   return (
-    <section className="w-[750px] h-[400px] flex flex-col">
-      {/* HEADER */}
+    <section className="finder-window w-[750px] h-[400px] flex flex-col">
       <div
         id="window-header"
-        className="flex items-center gap-3 p-2 bg-gray-200"
+        className="flex items-center gap-3 p-2 bg-gray-200 shrink-0"
       >
         <WindowControls target="finder" />
-        <Search className="icon" />
+        <Search className="icon max-sm:hidden" />
 
-        {/* 🧹 EMPTY TRASH BUTTON */}
         {activeLocation?.isTrash && (
           <button
             onClick={emptyTrash}
@@ -204,62 +200,72 @@ const handleDelete = (item) => {
         )}
       </div>
 
-      {/* BODY */}
-      <div className="bg-white flex h-full">
-        {/* SIDEBAR */}
-        <div className="sidebar">
-          {renderList("Favorites", Object.values(locations))}
-          {renderList("My Projects", locations.work.children)}
-        </div>
+      <div className="finder-body bg-white flex flex-1 min-h-0 overflow-hidden">
+        <aside className="finder-sidebar sidebar">
+          {renderSidebarList("Favorites", favorites)}
+          {renderSidebarList("Projects", projects)}
+        </aside>
 
-        {/* CONTENT */}
-        <ul className="content">
-          {items.map((item) => (
-            <li
-              key={item.id}
-              className={item.position}
-              onClick={() => openItem(item)}
-            >
-              <img src={item.icon} alt={item.name} />
-              <p>{item.name}</p>
+        <div className="finder-main flex flex-col flex-1 min-h-0 min-w-0">
+          <div className="finder-toolbar">
+            <p className="finder-path">{activeLocation?.name ?? "Portfolio"}</p>
+            {(locations.work.children.some((p) => p.id === activeLocation?.id) ||
+              activeLocation?.isTrash) && (
+              <button
+                type="button"
+                className="finder-back-btn"
+                onClick={() => setActiveLocation(locations.work)}
+              >
+                ← Back
+              </button>
+            )}
+          </div>
 
-              {/* 🗑 DELETE (NOT IN TRASH) */}
-              {!activeLocation?.isTrash && (
-                // <button
-                //   onClick={(e) => {
-                //     e.stopPropagation();
-                //     handleDelete(item);
-                //   }}
-                //   className="text-xs text-red-500"
-                // >
-                //   Delete
-                // </button>
-                <button
-  onClick={(e) => {
-    e.stopPropagation();
-    handleDelete(item);
-  }}
-  className="text-xs text-red-500 cursor-pointer hover:text-red-600 transition"
->
-  Delete
-</button>
-              )}
-
-              {/* 🔄 RESTORE (IN TRASH) */}
-              {activeLocation?.isTrash && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleRestore(item);
-                  }}
-                  className="text-xs text-green-500"
+          <ul className="finder-content content">
+            {items.length === 0 ? (
+              <li className="finder-empty">No items here</li>
+            ) : (
+              items.map((item) => (
+                <li
+                  key={item.id}
+                  className={clsx("finder-item", item.position)}
+                  onClick={() => openItem(item)}
                 >
-                  Restore
-                </button>
-              )}
-            </li>
-          ))}
-        </ul>
+                  <div className="finder-item-icon">
+                    <img src={item.icon} alt="" />
+                  </div>
+                  <p className="finder-item-name">{item.name}</p>
+
+                  {!activeLocation?.isTrash && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(item);
+                      }}
+                      className="finder-item-action finder-item-delete"
+                    >
+                      Delete
+                    </button>
+                  )}
+
+                  {activeLocation?.isTrash && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRestore(item);
+                      }}
+                      className="finder-item-action finder-item-restore"
+                    >
+                      Restore
+                    </button>
+                  )}
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
       </div>
     </section>
   );

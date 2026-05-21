@@ -163,34 +163,6 @@ const socials = [
   },
 ];
 
-const photosLinks = [
-  {
-    id: 1,
-    icon: "/icons/gicon1.svg",
-    title: "Library",
-  },
-  {
-    id: 2,
-    icon: "/icons/gicon2.svg",
-    title: "Memories",
-  },
-  {
-    id: 3,
-    icon: "/icons/file.svg",
-    title: "Places",
-  },
-  {
-    id: 4,
-    icon: "/icons/gicon4.svg",
-    title: "People",
-  },
-  {
-    id: 5,
-    icon: "/icons/gicon5.svg",
-    title: "Favorites",
-  },
-];
-
 const gallery = [
   {
     id: 1,
@@ -224,6 +196,18 @@ const gallery = [
 
 ];
 
+const mobileAppTitles = {
+  finder: "Portfolio",
+  safari: "Articles",
+  photos: "Gallery",
+  contact: "Contact",
+  terminal: "Skills",
+  resume: "Resume",
+  txtfile: "Notes",
+  imgfile: "Preview",
+  trash: "Trash",
+};
+
 export {
   navLinks,
   navIcons,
@@ -231,8 +215,8 @@ export {
   blogPosts,
   techStack,
   socials,
-  photosLinks,
   gallery,
+  mobileAppTitles,
 };
 
 const WORK_LOCATION = {
@@ -534,7 +518,13 @@ const WINDOW_CONFIG = {
   contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  photos: {
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: INITIAL_Z_INDEX,
+    data: null,
+  },
 //   terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 terminal:{ isOpen: false, isMinimized: false, isMaximized: false, zIndex: INITIAL_Z_INDEX,data: null},
   txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },

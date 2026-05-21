@@ -763,7 +763,7 @@ const Safari = () => {
   };
 
   return (
-    <section className="flex flex-col w-[900px] h-[600px] bg-[#f6f6f7] rounded-xl overflow-hidden">
+    <section className="flex flex-col w-[900px] h-[600px] max-sm:w-full max-sm:h-full max-sm:min-h-0 bg-[#f6f6f7] rounded-xl overflow-hidden">
 
       {/* HEADER */}
       <div
@@ -777,7 +777,7 @@ const Safari = () => {
 
         {/* SEARCH BAR */}
         <div className="flex-1 flex justify-center">
-          <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-white border w-[400px]">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-white border w-[400px] max-sm:w-full max-sm:max-w-full">
             <ShieldHalf size={14} />
             <Search size={14} />
 
@@ -798,7 +798,7 @@ const Safari = () => {
       </div>
 
       {/* CONTENT */}
-      <div className="flex-1 overflow-y-auto p-10 space-y-10">
+      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 sm:p-10 space-y-8 sm:space-y-10">
 
         {/* FAVORITES */}
         <div>
@@ -833,7 +833,7 @@ const Safari = () => {
             Frequently Visited
           </h2>
 
-          <div className="grid grid-cols-6 gap-6">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 sm:gap-6">
             {frequent.map((item, i) => (
               <div
                 key={i}

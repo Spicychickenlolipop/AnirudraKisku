@@ -11,7 +11,7 @@ const TextFile = () =>{
     const { name, image, subtitle, description } = data;
 
     return(
-        <section className="w-[500px] max-h-[400px] flex flex-col">
+        <section className="w-[500px] max-h-[400px] flex flex-col max-sm:w-full max-sm:max-h-none max-sm:h-full max-sm:min-h-0">
             {/* <div id="window-header">
                 <WindowControls target="txtfile"/>
                 <h2>{name}</h2>
@@ -29,7 +29,7 @@ const TextFile = () =>{
             </div>
 
             {/* <div className="p-5 space-y-6 bg-white"> */}
-            <div className="p-5 space-y-6 bg-white overflow-y-auto">
+            <div className="p-5 space-y-6 bg-white overflow-y-auto flex-1 min-h-0">
                 {image ? (
                     <div className="w-full">
                         <img src={image} alt={name} className="w-full h-auto rounded"/>
