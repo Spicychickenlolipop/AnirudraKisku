@@ -14,6 +14,11 @@ body {
   background-position: center;
 }
 
+/* Prevent horizontal overflow on mobile/deployed environments */
+html, body, #root {
+  overflow-x: hidden !important;
+}
+
 @media (max-width: 639px) {
   html,
   body {
@@ -219,6 +224,23 @@ body {
     #window-controls {
       @apply hidden;
     }
+  }
+
+  /* Defensive layout fixes for photos on some deployed mobile browsers */
+  #photos {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  #photos .photos-window,
+  #photos .photos-gallery-area,
+  #photos .photos-grid {
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .mobile-window-body {
