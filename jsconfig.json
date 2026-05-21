@@ -1,9 +1,22 @@
+// {
+//     "compilerOptions": {
+//         "baseUrl": ".",
+//         "paths": {
+//             "#*": ["src/*"]
+//         }
+//     },
+//     "include": ["src"]
+// }
+
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "#*": ["src/*"]
-        }
-    },
-    "include": ["src"]
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "#/*": ["src/*"]
+    }
+  },
+  "include": ["src"]
 }

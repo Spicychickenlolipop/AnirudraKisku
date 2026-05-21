@@ -6,6 +6,7 @@ html,
 body {
   width: 100dvw;
   overflow: hidden;
+  height: 100vh;
   height: 100dvh;
   background-image: url("/images/wallpaper.png");
   background-size: cover;
@@ -199,11 +200,12 @@ body {
     right: 0 !important;
     bottom: 0 !important;
     width: 100% !important;
+    height: 100vh !important;
     height: 100dvh !important;
     height: 100svh !important;
     max-height: 100dvh !important;
     box-sizing: border-box;
-    padding-top: calc(env(safe-area-inset-top, 0px) + 48px);
+    padding-top: calc(env(safe-area-inset-top, 0px) + 56px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
     transform: none !important;
 
@@ -733,6 +735,7 @@ input, textarea {
     bottom: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: 100vh !important;
     height: 100dvh !important;
     height: 100svh !important;
     max-height: 100dvh !important;
@@ -787,6 +790,12 @@ input, textarea {
     padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
     width: 100%;
     box-sizing: border-box;
+  }
+
+  @media (max-width: 440px) {
+    #photos .photos-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   #photos .photos-grid li {
