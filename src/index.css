@@ -806,6 +806,7 @@ input, textarea {
   #photos .photos-grid-item {
     display: flex;
     width: 100%;
+    aspect-ratio: 1;
     align-items: center;
     justify-content: center;
     min-height: 0;
@@ -822,10 +823,10 @@ input, textarea {
   #photos .photos-grid-img {
     display: block !important;
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
     max-width: 100% !important;
-    max-height: min(42vw, 200px) !important;
-    object-fit: contain !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
     object-position: center !important;
   }
 
