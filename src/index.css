@@ -1005,5 +1005,43 @@ input, textarea {
   }
 }
 
+/* Legacy mobile media query fallback for browsers that do not support width<=639px */
+@media (max-width: 639px) {
+  html, body, #root, main, #mobile {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .mobile-app-window,
+  #photos:not(.fixed),
+  #photos.mobile-app-window {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    height: 100svh !important;
+    max-height: 100dvh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    transform: translate(0) !important;
+  }
+
+  #photos {
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  #photos .photos-window,
+  #photos .photos-gallery-area,
+  #photos .photos-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
 
 
