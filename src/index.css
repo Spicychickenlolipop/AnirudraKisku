@@ -19,6 +19,13 @@ html, body, #root {
   overflow-x: hidden !important;
 }
 
+/* Force root and main containers to match viewport width to avoid 100dvw/100svh inconsistencies */
+html, body, #root, main, #mobile {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
 @media (max-width: 639px) {
   html,
   body {
@@ -207,7 +214,8 @@ html, body, #root {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    width: 100% !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
     height: 100vh !important;
     height: 100dvh !important;
     height: 100svh !important;
