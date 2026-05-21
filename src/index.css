@@ -1043,5 +1043,22 @@ input, textarea {
   }
 }
 
+/* Ensure the mobile window wrapper is always full-screen on mobile state.
+   This avoids depending on unsupported media query syntax in some browsers. */
+.mobile-app-window,
+#photos.mobile-app-window {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  height: 100svh !important;
+  max-height: 100dvh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  transform: translate(0) !important;
+}
+
 
 
