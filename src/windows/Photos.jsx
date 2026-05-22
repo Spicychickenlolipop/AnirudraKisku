@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, Palette } from "lucide-react";
 import { useEffect } from "react";
 
 import WindowWrapper from "#hoc/WindowWrapper";
@@ -29,7 +29,13 @@ const Photos = () => {
       imageUrl: item.img,
       gallery,
       index: idx,
+      parentApp: "photos",
     });
+  };
+
+  const setRandomWallpaper = () => {
+    const randomItem = gallery[Math.floor(Math.random() * gallery.length)];
+    setWallpaper(randomItem.img);
   };
 
   return (
@@ -41,6 +47,15 @@ const Photos = () => {
       >
         <WindowControls target="photos" />
         <h2 className="flex-1 text-center font-bold text-gray-800">Gallery</h2>
+        <button
+          type="button"
+          onClick={setRandomWallpaper}
+          className="p-2 mr-2 hover:bg-gray-100 rounded-md transition cursor-pointer"
+          title="Set random image as wallpaper"
+          aria-label="Set wallpaper"
+        >
+          <Palette size={18} />
+        </button>
         <a
           href={`mailto:${email}`}
           className="p-2 mr-2 hover:bg-gray-100 rounded-md transition"

@@ -1,11 +1,16 @@
 import { ChevronLeft } from "lucide-react";
 import { mobileAppTitles } from "#constants";
 import useWindowStore from "#store/window";
+import useLocationStore from "#store/location";
 import { useIsMobile } from "../hooks/useIsMobile";
+import { getMobileBackAction } from "../utils/appNavigation";
 
 const MobileNavBar = () => {
   const isMobile = useIsMobile();
-  const { windows, closeAllWindows } = useWindowStore();
+  const { windows, closeWindow, focusWindow, closeAllWindows } =
+    useWindowStore();
+  const { activeLocation, setActiveLocation, resetActiveLocation } =
+    useLocationStore();
 
   if (!isMobile) return null;
 
@@ -22,10 +27,21 @@ const MobileNavBar = () => {
   const topKey = topEntry[0];
   const title = mobileAppTitles[topKey] ?? topKey;
 
-  const goHome = (e) => {
+  const { label: backLabel, action: goBack } = getMobileBackAction({
+    topKey,
+    windows,
+    activeLocation,
+    closeWindow,
+    focusWindow,
+    closeAllWindows,
+    setActiveLocation,
+    resetActiveLocation,
+  });
+
+  const handleBack = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    closeAllWindows();
+    goBack();
   };
 
   return (
@@ -37,12 +53,12 @@ const MobileNavBar = () => {
       <button
         type="button"
         className="ios-back-btn"
-        onPointerDown={goHome}
-        onClick={goHome}
-        aria-label="Back to Home"
+        onPointerDown={handleBack}
+        onClick={handleBack}
+        aria-label={`Back to ${backLabel}`}
       >
         <ChevronLeft size={22} strokeWidth={2.5} />
-        <span>Home</span>
+        <span>{backLabel}</span>
       </button>
       <h2 className="ios-nav-title">{title}</h2>
       <div className="ios-nav-spacer" aria-hidden="true" />

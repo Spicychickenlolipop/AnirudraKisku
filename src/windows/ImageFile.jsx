@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import { WindowControls } from "#components";
+import { WindowControls, AppBackButton } from "#components";
 import WindowWrapper from "#hoc/WindowWrapper";
 import useWindowStore from "#store/window";
 
@@ -46,6 +46,7 @@ const ImageWindowContent = () => {
         className="flex items-center gap-2 p-2 bg-gray-200 shrink-0"
       >
         <WindowControls target="imgfile" />
+        <AppBackButton currentWindow="imgfile" className="max-sm:hidden shrink-0" />
 
         {hasGallery && galleryItems.length > 1 && (
           <button

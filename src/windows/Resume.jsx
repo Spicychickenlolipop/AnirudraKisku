@@ -1,4 +1,4 @@
-import { WindowControls } from "#components";
+import { WindowControls, AppBackButton } from "#components";
 import WindowWrapper from "#hoc/WindowWrapper.jsx"
 import { Download } from "lucide-react";
 import { Document, Page, pdfjs } from 'react-pdf';
@@ -16,6 +16,7 @@ const Resume = () => {
     <div className="flex flex-col h-full min-h-0 w-full">
       <div id="window-header">
         <WindowControls target="resume" />
+        <AppBackButton currentWindow="resume" className="max-sm:hidden shrink-0" />
         <h2>Resume.pdf</h2>
 
         <a

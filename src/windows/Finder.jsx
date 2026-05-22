@@ -107,14 +107,17 @@ const Finder = () => {
 
   /* ================= OPEN ITEM ================= */
   const openItem = (item) => {
-    if (item.fileType === "pdf") return openWindow("resume");
+    if (item.fileType === "pdf") {
+      return openWindow("resume", { parentApp: "finder" });
+    }
 
     if (item.kind === "folder") return setActiveLocation(item);
 
-    if (["fig", "url"].includes(item.fileType) && item.href)
+    if (["fig", "url"].includes(item.fileType) && item.href) {
       return window.open(item.href, "_blank");
+    }
 
-    openWindow(`${item.fileType}${item.kind}`, item);
+    openWindow(`${item.fileType}${item.kind}`, { ...item, parentApp: "finder" });
   };
 
   /* ================= DELETE ================= */
@@ -213,7 +216,7 @@ const handleDelete = (item) => {
               activeLocation?.isTrash) && (
               <button
                 type="button"
-                className="finder-back-btn"
+                className="finder-back-btn max-sm:hidden"
                 onClick={() => setActiveLocation(locations.work)}
               >
                 ← Back

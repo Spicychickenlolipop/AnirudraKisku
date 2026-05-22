@@ -1,5 +1,5 @@
 import WindowWrapper from "#hoc/WindowWrapper";
-import { WindowControls } from "#components";
+import { WindowControls, AppBackButton } from "#components";
 import useWindowStore from "#store/window";
 
 const TextFile = () =>{
@@ -19,6 +19,7 @@ const TextFile = () =>{
             <div id="window-header" className="flex items-center justify-between p-2 bg-gray-200">
 
                 <WindowControls target="txtfile" />
+                <AppBackButton currentWindow="txtfile" className="max-sm:hidden shrink-0" />
 
                 {/* ✅ CENTERED TITLE */}
                 {/* <h2 className="absolute left-1/2 -translate-x-1/2 font-medium"> */}
